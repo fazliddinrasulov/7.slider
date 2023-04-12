@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { shortList, list, longList } from "./data";
+import { longList } from "./data";
 import { FaQuoteRight } from "react-icons/fa";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
 const Carousel = () => {
-  const [people, setPeople] = useState(longList);
+  const people = [...longList];
   const [currentPerson, setCurrentPerson] = useState(0);
   const prevSlide = () => {
     setCurrentPerson((oldValue) => {
