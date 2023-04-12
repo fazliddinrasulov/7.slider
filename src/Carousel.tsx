@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { longList } from "./data";
 import { FaQuoteRight } from "react-icons/fa";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
@@ -12,20 +12,21 @@ const Carousel = () => {
       return newValue;
     });
   };
-  const nextSlide = () => {
+  const nextSlide = useCallback(() => {
     setCurrentPerson((oldValue) => {
       const newValue = (oldValue + 1) % people.length;
       return newValue;
     });
-  };
+  }, [people.length]);
   useEffect(() => {
     let sliderId = setInterval(() => {
       return nextSlide();
     }, 3000);
+
     return () => {
       clearInterval(sliderId);
     };
-  }, [currentPerson]);
+  }, [currentPerson, nextSlide]);
   return (
     <section className="slider-container">
       {people.map((person, i) => {
