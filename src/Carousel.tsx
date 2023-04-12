@@ -20,7 +20,7 @@ const Carousel = () => {
   };
   useEffect(() => {
     let sliderId = setInterval(() => {
-      nextSlide();
+      return nextSlide();
     }, 3000);
     return () => {
       clearInterval(sliderId);
